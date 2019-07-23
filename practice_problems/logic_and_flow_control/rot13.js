@@ -3,15 +3,7 @@
 // with the character 13 spaces later in the alphabet.
 // rules: Letter transformations preserve case.
 //        Don't modify characters that are not letters.
-// algorithm: initiate a results string. Set a constant for transformation
-// value. Loop through the original string. Find the ASCII character code of
-// each character. If it is not between 65 and 90, or 97 and 122, add the
-// character as is to the string. If it is between 65 and 90 inclusive. Add 13. If the
-// result is greater than 90, subtract 90 from the value and add to 64. Then
-// convert back to a character and add to the result string. Add 13. If it is between
-// 97 and 122 inclusive, the value stays the same. If the result is greater than 122, subtract
-// 122 from the value and add to 96. Then
-// convert back to a character and add to the result string.
+
 
 function rot13(string) {
   var TRANSFORMATION_VALUE = 13;
@@ -29,7 +21,7 @@ function rot13(string) {
       newString += string[i];
       continue;
     }
-    var asciiNumeric = string.charCodeAt(i) + TRANSFORMATION_VALUE
+    var asciiNumeric = string.charCodeAt(i) + TRANSFORMATION_VALUE;
     if (string[i] >= 'A' && string[i] <= 'Z') {
       if (asciiNumeric > UPPERCASE_Z) {
         asciiNumeric = asciiNumeric - UPPERCASE_Z + UPPERCASE_A - 1;
