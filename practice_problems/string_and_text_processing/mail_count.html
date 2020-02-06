@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="http://dbdwvr6p7sskw.cloudfront.net/210/files/email_data_v2.js"></script>
+    <script>
+      function mailCount(emailData) {
+        var emailCount = emailData.split(/\#\#\|\|\#\#/).length;
+        console.log('Count of Email: ' + String(emailCount));
+        var emails = emailData.split(/\#\#\|\|\#\#/);
+        emails = emails.map(function (email) {
+          return email.split(/\#\/\#/);
+        });
+        var emailObject = {};
+        emailDates = emails.map(function (email) {
+          return email[2];
+        })
+
+
+        dateObjects = emailDates.map(getDateObject);
+        dateObjects = dateObjects.sort( function (dateInstance1, dateInstance2) {
+          return dateInstance1.getTime() - dateInstance2.getTime();
+        });
+
+        var earliestDate = dateObjects[0].toDateString();
+        var latestDate = dateObjects[dateObjects.length - 1].toDateString();
+        console.log(`Date range: ${earliestDate} - ${latestDate}`)
+
+      }
+
+      function getDateObject(emailDate) {
+          var date = emailDate.replace(/\.*Date:\s+/, '').split(/\-/);
+          var month = parseInt(date[0], 10) - 1 ;
+          var day = parseInt(date[1], 10);
+          var year = parseInt(date[2], 10);
+
+
+        return new Date(year, month, day)
+      }
+
+      mailCount(emailData);
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

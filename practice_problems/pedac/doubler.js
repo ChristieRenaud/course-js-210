@@ -1,0 +1,13 @@
+doubler([1, 'a'])    //[2, 'aa']
+doubler([1, 2,,3,4]) //[2, 4, 6, 8]
+doubler([[1, 2, , 4], [1]])  //[[1, 2, , 4], [1, 2, , 4], [1], [1]]
+doubler([1], [2]) // [2]
+doubler('abc') // ['aa', 'bb', 'cc']
+doubler(359) // [6, 10, 18]
+doubler({a: 1, b: 2}) // [2, 4]
+doubler(null) // 'Invalid input'
+doubler([1, 1]) // [2, 2]
+doubler([]) // []
+doubler([[a: 1]])  // [[a:1], [a: 1]]
+doubler([[1, [2]]]) // [[1, [2]], [1, [2]]]
+doubler([a: 1]) // [a: 1]
